@@ -1,0 +1,23 @@
+{
+    "name": "achrafouahab/hello_world",
+    "description": "This is just a test module for learning perspective.",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "Achrafouahab\\HelloWorld\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ouahab-a",
+            "email": "a.ouahab@void.fr"
+        }
+    ],
+    "require": {},
+    "repositories": [{
+        "name": "drupal",
+        "type": "composer",
+        "url": "https://packages.drupal.org/11"
+    }]
+}
