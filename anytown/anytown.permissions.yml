@@ -1,0 +1,3 @@
+view weekly weather:
+  title: 'View Weekly Weather'
+  description: 'Allow users to view the weekly weather forecast for Anytown.'

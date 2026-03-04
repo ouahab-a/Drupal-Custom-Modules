@@ -1,0 +1,12 @@
+.weather_page--forecast button {
+  font-size: 0.82rem;
+  margin: 1rem 0;
+  padding: 5px;
+  background-color: chocolate;
+  border-color: chocolate;
+  border-radius: 10px;
+}
+
+.weather_page--forecast button:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,9 @@
+anytown.weather_page:
+  # The path to the page, with a placeholder for the style parameter. /weather/short or /weather/extended
+  path: '/weather/{style}'
+  defaults:
+    _title: 'Weather Information'
+    _controller: '\Drupal\anytown\Controller\WeatherPage::build'
+    style: 'short' # Default value for the style parameter
+  requirements:
+    _permission: 'view weekly weather' # Permission required to access this route

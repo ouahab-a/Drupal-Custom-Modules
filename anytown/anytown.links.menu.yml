@@ -1,0 +1,5 @@
+anytown.weather:
+  title: 'Weather'
+  description: 'View the current weather information for Anytown.'
+  route_name: anytown.weather_page
+  menu_name: main
