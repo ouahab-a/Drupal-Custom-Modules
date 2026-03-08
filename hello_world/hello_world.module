@@ -1,0 +1,92 @@
+<?php
+function hello_world_page_attachments_alter(array &$attachments) {
+
+  $attachments['#attached']['html_head'][] = [
+    [
+      '#tag' => 'meta',
+      '#attributes' => [
+        'name' => 'viewport',
+        'content' => 'width=device-width, initial-scale=1, shrink-to-fit=no',
+      ],
+    ],
+    'viewport'
+  ];
+
+  // $attachments['#attached']['library'][] = 'hello_world/tailwind';
+
+}
+
+/**
+ * Implements hook_theme().
+ */
+function hello_world_theme(): array {
+  return [
+    'hello_preprocess_page' => [
+      'variables' => [],
+    ],
+    // ✅ Ajouter ceci
+    'node_select_result' => [
+      'variables' => [
+        'selected_title' => NULL,
+        'related_titles' => [],
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function hello_world_preprocess_page(array &$variables): void {
+  $current_route = \Drupal::routeMatch()->getRouteName();
+
+  // Cibler uniquement notre route
+  if ($current_route !== 'hello_world.hello_preprocess') {
+    return;
+  }
+
+  $config = \Drupal::config('hello_world.settings');
+  $variables['is_front']   = \Drupal::service('path.matcher')->isFrontPage();
+  $variables['hello_name'] = $config->get('hello.name') ?: 'World';
+}
+// Can not observe what this code do!
+function hello_world_metatag_info(): array {
+  return [
+    'hello_person' => [
+      'label'       => t('Hello Person'),
+      'description' => t('Nom de la personne saluée.'),
+      'class'       => 'Drupal\metatag\Plugin\metatag\Tag\MetaNameBase',
+      'weight'      => 10,
+      'group'       => 'basic',  // Groupe dans l'UI Metatag
+    ],
+  ];
+}
+
+
+function hello_world_preprocess_menu(&$variables) {
+
+  // dump($variables); 
+  // Why this code is executed many time ?
+
+  // Il ajoute la classe CSS my-custom-class sur chaque item du menu au rendu HTML.
+  foreach ($variables['items'] as &$item) {
+    $item['attributes']->addClass('hello-world-custom-class');
+  }
+
+}
+
+function hello_world_preprocess_block(array &$variables): void {
+
+  if ($variables['plugin_id'] !== 'system_branding_block') {
+    return;
+  }
+
+  $variables['content']['site_logo'] = [
+    '#theme'   => 'image',
+    '#uri'     => 'https://static.cdnlogo.com/logos/d/88/drupal-wordmark.svg',
+    '#alt'     => 'Home',
+    '#access'  => TRUE,
+  ];
+  // Attacher la librairie au block directement, pas au site_logo
+  $variables['#attached']['library'][] = 'hello_world/branding';
+}

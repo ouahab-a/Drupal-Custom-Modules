@@ -1,0 +1,11 @@
+branding:
+  css:
+    theme:
+      css/branding.css: {}
+
+# Nouvelle librairie Tailwind
+tailwind:
+  js:
+    https://unpkg.com/@tailwindcss/browser@4:
+      type: external
+      minified: true

@@ -1,0 +1,7 @@
+#block-mytheme-site-branding > div.site-branding__inner > a > img {
+  width: 150px !important;
+  height: auto !important;
+  max-height: 150px !important;
+  max-width: none !important;
+  display: block !important;
+}

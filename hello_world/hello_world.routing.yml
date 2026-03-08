@@ -5,3 +5,17 @@ hello_world.content:
     _title: 'Hello World'
   requirements:
     _permission: 'access content'
+hello_world.hello_query:
+  path: '/hello-query'
+  defaults:
+    _title: 'Hello Query'
+    _controller: '\Drupal\hello_world\Controller\HelloQueryController::build'
+  requirements:
+    _permission: 'access content'
+hello_world.hello_preprocess:
+  path: '/hello-preprocess'
+  defaults:
+    _controller: '\Drupal\hello_world\Controller\HelloPreprocessController::content'
+    _title: 'Hello Preprocess'
+  requirements:
+    _permission: 'access content'

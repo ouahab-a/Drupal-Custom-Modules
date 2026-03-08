@@ -7,3 +7,20 @@ anytown.weather_page:
     style: 'short' # Default value for the style parameter
   requirements:
     _permission: 'view weekly weather' # Permission required to access this route
+# Settings form route.
+anytown.settings:
+  path: '/admin/config/system/anytown'
+  defaults:
+    _title: 'Anytown Settings'
+    # For form controllers use _form instead of _controller. This tells Drupal
+    # to use the build, validate, submit workflow for a form.
+    _form: 'Drupal\anytown\Form\SettingsForm'
+  requirements:
+    _permission: 'administer site configuration'
+anytown.attending:
+  path: '/attending'
+  defaults:
+    _title: 'Vendors attending this week'
+    _controller: '\Drupal\anytown\Controller\Attending::build'
+  requirements:
+    _permission: 'access content'

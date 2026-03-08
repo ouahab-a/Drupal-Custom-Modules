@@ -1,0 +1,19 @@
+{% if selected_title %}
+  <div class="node-select-result">
+
+    <h2>{{ 'Node sélectionné :'|t }}</h2>
+    <p><strong>{{ selected_title }}</strong></p>
+
+    {% if related_titles %}
+      <h3>{{ 'Nodes du même type :'|t }}</h3>
+      <ul>
+        {% for title in related_titles %}
+          <li>{{ title }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>{{ 'Aucun autre node de ce type.'|t }}</p>
+    {% endif %}
+
+  </div>
+{% endif %}
